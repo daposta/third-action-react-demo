@@ -2,24 +2,25 @@ name: Deployment Workflow
 on: push
 jobs:
     lint:
-        runs-on: ubuntu-lastest
+        runs-on: ubuntu-latest
         steps:
             - name: Lint code
-             run: npm lint
+              run: npm lint
     test:
         needs: lint
-        runs-on: ubuntu-lastest
+        runs-on: ubuntu-latest
         steps:
             - name: Test code
-             run: npm test
+              run: npm test
     build:
         needs: test
-        runs-on: ubuntu-lastest
+        runs-on: ubuntu-latest
         steps:
             - name: Build code
-             run: npm run build
+              run: npm run build
     deploy:
         needs: build
+        runs-on: ubuntu-latest
         steps:
             - name: deploy code
-             run: echo "Done!!"
+              run: echo "Done!!"
