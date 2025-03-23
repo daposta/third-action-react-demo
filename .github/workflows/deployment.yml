@@ -1,0 +1,25 @@
+name: Deployment Workflow
+on: push
+jobs:
+    lint:
+        runs-on: ubuntu-lastest
+        steps:
+            - name: Lint code
+             run: npm lint
+    test:
+        needs: lint
+        runs-on: ubuntu-lastest
+        steps:
+            - name: Test code
+             run: npm test
+    build:
+        needs: test
+        runs-on: ubuntu-lastest
+        steps:
+            - name: Build code
+             run: npm run build
+    deploy:
+        needs: build
+        steps:
+            - name: deploy code
+             run: echo "Done!!"
